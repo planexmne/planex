@@ -16,6 +16,19 @@
 </head>
 
 <body>
+  <script>
+    // Prevent automatic restoration of scroll position in some in-app browsers.
+    if ('scrollRestoration' in history) {
+      try { history.scrollRestoration = 'manual'; } catch (e) { /* ignore */ }
+    }
+    // On load, ensure we're at top when there's no hash (avoid unwanted autoscroll)
+    window.addEventListener('load', function() {
+      if (!location.hash) {
+        // Small delay helps in some webviews where initial positioning happens slightly after load
+        setTimeout(function(){ window.scrollTo({ top: 0, left: 0, behavior: 'auto' }); }, 120);
+      }
+    });
+  </script>
   <header class="header">
     <div class="container header__inner">
       <a class="logo" href="index.html" aria-label="PLANEX">
