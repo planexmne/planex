@@ -19,6 +19,7 @@
   --shadow: 0 10px 40px rgba(28, 55, 110, 0.06);
   --radius-xl: 32px;
   --radius-lg: 18px;
+  --scroll-offset: 84px;
 }
 
 *,
@@ -29,6 +30,12 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--scroll-offset);
+}
+
+/* Ensure anchor navigation leaves space for header (useful for mobile and in-app browsers) */
+[id] {
+  scroll-margin-top: var(--scroll-offset);
 }
 
 body {
